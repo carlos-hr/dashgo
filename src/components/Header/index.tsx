@@ -1,10 +1,14 @@
-import { Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { RiMenuLine } from "react-icons/ri";
+import { useSidebarContext } from "../../contexts/SideBarContext";
 import Logo from "./components/Logo";
 import NotificationsNav from "./components/NotificationsNav";
 import Profile from "./components/Profile";
 import Searchbox from "./components/Searchbox";
 
 const Header = () => {
+  const { onOpen } = useSidebarContext();
+
   const isDesktop = useBreakpointValue({
     base: false,
     lg: true,
@@ -21,6 +25,16 @@ const Header = () => {
       px="6"
       align="center"
     >
+      {!isDesktop && (
+        <IconButton
+          fontSize="24"
+          variant="unstyled"
+          onClick={onOpen}
+          aria-label="open navigation"
+          mr="2"
+          icon={<Icon as={RiMenuLine} />}
+        ></IconButton>
+      )}
       <Logo />
       {isDesktop && <Searchbox />}
 
