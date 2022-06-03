@@ -1,10 +1,15 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useBreakpointValue } from "@chakra-ui/react";
 import Logo from "./components/Logo";
 import NotificationsNav from "./components/NotificationsNav";
 import Profile from "./components/Profile";
 import Searchbox from "./components/Searchbox";
 
 const Header = () => {
+  const isDesktop = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex
       as="header"
@@ -17,11 +22,11 @@ const Header = () => {
       align="center"
     >
       <Logo />
-      <Searchbox />
+      {isDesktop && <Searchbox />}
 
       <Flex align="center" ml="auto">
         <NotificationsNav />
-        <Profile />
+        <Profile showProfileData={isDesktop} />
       </Flex>
     </Flex>
   );
