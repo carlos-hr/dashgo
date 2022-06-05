@@ -17,12 +17,19 @@ import {
 import { Header, Pagination, SideBar } from "../../components";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const UserList = () => {
   const isDesktop = useBreakpointValue({
     base: false,
     lg: true,
   });
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
     <Box>
