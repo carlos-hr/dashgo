@@ -34,7 +34,7 @@ const UserList = () => {
     lg: true,
   });
 
-  const prefetchUser = async (id: number) => {
+  const prefetchUser = async (id: string) => {
     await queryClient.prefetchQuery(
       ["user", id],
       async () => {
@@ -112,7 +112,7 @@ const UserList = () => {
                           <Box>
                             <Link
                               color="purple.400"
-                              onMouseEnter={() => prefetchUser(Number(user.id))}
+                              onMouseEnter={() => prefetchUser(user.id)}
                             >
                               <Text fontWeight="bold">{user.name}</Text>
                             </Link>
@@ -122,7 +122,7 @@ const UserList = () => {
                           </Box>
                         </Td>
 
-                        {isDesktop && <Td>{user.createdAt}</Td>}
+                        {isDesktop && <Td>{user.created_at}</Td>}
                       </Tr>
                     );
                   })}
