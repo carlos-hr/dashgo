@@ -1,6 +1,7 @@
 import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { RiMenuLine } from "react-icons/ri";
 import { useSidebarContext } from "../../contexts/SideBarContext";
+import { signOut } from "../../utils/signOut";
 import Logo from "./components/Logo";
 import NotificationsNav from "./components/NotificationsNav";
 import Profile from "./components/Profile";
@@ -42,6 +43,7 @@ const Header = () => {
         <NotificationsNav />
         <Profile showProfileData={isDesktop} />
       </Flex>
+      <button onClick={signOut}>logout</button>
     </Flex>
   );
 };

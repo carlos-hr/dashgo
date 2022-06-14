@@ -61,6 +61,9 @@ export const makeServer = () => {
 
       this.namespace = "";
       this.passthrough();
+      this.passthrough("http://localhost:3333/me");
+      this.passthrough("http://localhost:3333/sessions");
+      this.passthrough("http://localhost:3333/refresh");
     },
   });
 

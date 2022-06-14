@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../components";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuthContext } from "../contexts/AuthContext";
+import { SSRGuest } from "../utils/SSRGuest";
 
 type SingInFormData = {
   email: string;
@@ -18,10 +20,12 @@ const SignIn = () => {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema),
   });
+
   const { errors } = formState;
+  const { signIn } = useAuthContext();
 
   const handleSignIn: SubmitHandler<SingInFormData> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await signIn(data);
   };
 
   return (
@@ -69,3 +73,9 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+export const getServerSideProps = SSRGuest(async (ctx) => {
+  return {
+    props: {},
+  };
+});

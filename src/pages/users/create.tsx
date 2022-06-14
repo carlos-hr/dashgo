@@ -14,9 +14,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import * as yup from "yup";
-import { api } from "../../services/api/axios";
-import { queryClient } from "../../services/queryClient";
+import { queryClient } from "../../services/react-query/queryClient";
 import { useRouter } from "next/router";
+import { api } from "../../services/api/apiClient";
 
 type CreateUserFormData = {
   name: string;

@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { api } from "../api/axios";
+import { api } from "../api/apiClient";
 
 type User = {
   id: string;
