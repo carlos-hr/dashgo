@@ -21,8 +21,8 @@ import { RiAddLine } from "react-icons/ri";
 import NextLink from "next/link";
 import { useUsers } from "../../services/hooks/useUsers";
 import { useState } from "react";
-import { queryClient } from "../../services/queryClient";
-import { api } from "../../services/api/axios";
+import { queryClient } from "../../services/react-query/queryClient";
+import { api } from "../../services/api/apiClient";
 
 const UserList = () => {
   const [page, setPage] = useState(1);
