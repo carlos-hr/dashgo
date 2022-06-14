@@ -7,8 +7,9 @@ import {
   useState,
 } from "react";
 import { setCookie, parseCookies } from "nookies";
-import { signOut } from "../utils/signOut";
 import { authApi } from "../services/api/apiClient";
+import Router from "next/router";
+import { destroyCookie } from "nookies";
 
 interface AuthContextProps {
   children: ReactNode;
@@ -31,24 +32,16 @@ type AuthContextData = {
   user: User;
 };
 
+export const signOut = () => {
+  destroyCookie(undefined, "dashgo.token");
+  destroyCookie(undefined, "dashgo.refreshToken");
+
+  Router.push("/");
+};
+
 const AuthContext = createContext({} as AuthContextData);
-// let authChannel: BroadcastChannel;
 
 export const AuthProvider = ({ children }: AuthContextProps) => {
-  // useEffect(() => {
-  //   authChannel = new BroadcastChannel("auth");
-
-  //   authChannel.onmessage = (message) => {
-  //     switch (message.data) {
-  //       case "signOut":
-  //         signOut();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   };
-  // }, []);
-
   const router = useRouter();
 
   const [user, setUser] = useState<User>();
