@@ -1,5 +1,5 @@
 import { Flex, SimpleGrid } from "@chakra-ui/react";
-import { Chart, Header, SideBar } from "../components";
+import { Chart, Header, Sidebar } from "../components";
 import Authorization from "../components/Authorization";
 import { SSRAuth } from "../utils/SSRAuth";
 
@@ -10,7 +10,7 @@ const Dashboard = () => {
 
       <Authorization permissions={["metrics.list"]}>
         <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
-          <SideBar />
+          <Sidebar />
 
           <SimpleGrid
             flex="1"

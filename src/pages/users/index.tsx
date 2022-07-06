@@ -16,7 +16,7 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Header, Pagination, SideBar } from "../../components";
+import { Header, Pagination, Sidebar } from "../../components";
 import { RiAddLine } from "react-icons/ri";
 import NextLink from "next/link";
 import { useUsers } from "../../services/hooks/useUsers";
@@ -53,7 +53,7 @@ const UserList = () => {
       <Header />
 
       <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
-        <SideBar />
+        <Sidebar />
 
         <Box flex="1" borderRadius={8} bg="gray.800" p="8">
           <Flex mb="8" justify="space-between" align="center">

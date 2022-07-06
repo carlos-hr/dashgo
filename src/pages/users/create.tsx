@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Header, Input, SideBar } from "../../components";
+import { Header, Input, Sidebar } from "../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -77,7 +77,7 @@ const CreateUser = () => {
       <Header />
 
       <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
-        <SideBar />
+        <Sidebar />
 
         <Box
           as="form"
