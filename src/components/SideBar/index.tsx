@@ -9,7 +9,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import { SidebarContext } from "../../contexts/SidebarContext";
+import SidebarContext from "../../contexts/SidebarContext";
 import SidebarNav from "./components/SidebarNav";
 
 const Sidebar = () => {
