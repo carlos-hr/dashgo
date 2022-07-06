@@ -1,98 +1,36 @@
-import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
-import { ApexOptions } from "apexcharts";
-import dynamic from "next/dynamic";
-import { Header, SideBar } from "../components";
-
-const Chart = dynamic(() => import("react-apexcharts"), {
-  ssr: false,
-});
+import { Flex, SimpleGrid } from "@chakra-ui/react";
+import { Chart, Header, Sidebar } from "../components";
+import Authorization from "../components/Authorization";
+import { SSRAuth } from "../utils/SSRAuth";
 
 const Dashboard = () => {
-  const options: ApexOptions = {
-    chart: {
-      toolbar: {
-        show: false,
-      },
-      zoom: {
-        enabled: false,
-      },
-      foreColor: theme.colors.gray[500],
-    },
-    grid: {
-      show: false,
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    tooltip: {
-      enabled: false,
-    },
-    xaxis: {
-      type: "datetime",
-      axisBorder: {
-        color: theme.colors.gray[600],
-      },
-      axisTicks: {
-        color: theme.colors.gray[600],
-      },
-      categories: [
-        "2021-03-22T00:00:00.000Z",
-        "2021-03-23T00:00:00.000Z",
-        "2021-03-24T00:00:00.000Z",
-        "2021-03-25T00:00:00.000Z",
-        "2021-03-26T00:00:00.000Z",
-        "2021-03-27T00:00:00.000Z",
-        "2021-03-28T00:00:00.000Z",
-      ],
-    },
-    fill: {
-      opacity: 0.3,
-      type: "gradient",
-      gradient: {
-        shade: "dark",
-        opacityFrom: 0.7,
-        opacityTo: 0.3,
-      },
-    },
-  };
-
-  const series = [
-    {
-      name: "series 1",
-      data: [31, 120, 10, 28, 51, 17, 101],
-    },
-  ];
-
   return (
     <Flex direction="column" h="100vh">
       <Header />
 
-      <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
-        <SideBar />
+      <Authorization permissions={["metrics.list"]}>
+        <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
+          <Sidebar />
 
-        <SimpleGrid
-          flex="1"
-          gap="4"
-          minChildWidth={320}
-          alignItems="flex-start"
-        >
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
-            <Text fontSize="lg" mb="4">
-              Inscritos da semana
-            </Text>
-            <Chart options={options} series={series} type="area" height={160} />
-          </Box>
-
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
-            <Text fontSize="lg" mb="4">
-              Taxa de abertura
-            </Text>
-            <Chart options={options} series={series} type="area" height={160} />
-          </Box>
-        </SimpleGrid>
-      </Flex>
+          <SimpleGrid
+            flex="1"
+            gap="4"
+            minChildWidth={320}
+            alignItems="flex-start"
+          >
+            <Chart text="Inscritos da semana" />
+            <Chart text="Taxa de abertura" />
+          </SimpleGrid>
+        </Flex>
+      </Authorization>
     </Flex>
   );
 };
 
 export default Dashboard;
+
+export const getServerSideProps = SSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});
