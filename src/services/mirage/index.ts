@@ -61,9 +61,9 @@ export const makeServer = () => {
 
       this.namespace = "";
       this.passthrough();
-      this.passthrough("http://localhost:3333/me");
-      this.passthrough("http://localhost:3333/sessions");
-      this.passthrough("http://localhost:3333/refresh");
+      this.passthrough("https://auth-ignite.herokuapp.com/me");
+      this.passthrough("https://auth-ignite.herokuapp.com/sessions");
+      this.passthrough("https://auth-ignite.herokuapp.com/refresh");
     },
   });
 
