@@ -14,7 +14,7 @@ export const setAuthClient = (ctx = undefined) => {
   });
 
   const authApi = axios.create({
-    baseURL: "http://localhost:3333",
+    baseURL: "https://auth-ignite.herokuapp.com",
     headers: {
       Authorization: `Bearer ${cookies["dashgo.token"]}`,
     },
