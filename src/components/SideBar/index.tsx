@@ -8,12 +8,11 @@ import {
   DrawerOverlay,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useContext } from "react";
-import SidebarContext from "../../contexts/SidebarContext";
+import { useSidebarContext } from "../../contexts/SideBarContext";
 import SidebarNav from "./components/SidebarNav";
 
 const Sidebar = () => {
-  const { isOpen, onClose } = useContext(SidebarContext);
+  const { isOpen, onClose } = useSidebarContext();
 
   const isMobile = useBreakpointValue({
     base: true,
