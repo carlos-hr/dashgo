@@ -1,6 +1,7 @@
 import { Flex, SimpleGrid } from "@chakra-ui/react";
-import { Chart, Header, Sidebar } from "../components";
+import { Chart, Header } from "../components";
 import Authorization from "../components/Authorization";
+import Sidebar from "../components/Sidebar";
 import { SSRAuth } from "../utils/SSRAuth";
 
 const Dashboard = () => {

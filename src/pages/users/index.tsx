@@ -16,13 +16,14 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Header, Pagination, Sidebar } from "../../components";
+import { Header, Pagination } from "../../components";
 import { RiAddLine } from "react-icons/ri";
 import NextLink from "next/link";
 import { useUsers } from "../../services/hooks/useUsers";
 import { useState } from "react";
 import { queryClient } from "../../services/react-query/queryClient";
 import { api } from "../../services/api/apiClient";
+import Sidebar from "../../components/Sidebar";
 
 const UserList = () => {
   const [page, setPage] = useState(1);

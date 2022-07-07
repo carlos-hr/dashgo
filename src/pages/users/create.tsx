@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Header, Input, Sidebar } from "../../components";
+import { Header, Input } from "../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -17,6 +17,7 @@ import * as yup from "yup";
 import { queryClient } from "../../services/react-query/queryClient";
 import { useRouter } from "next/router";
 import { api } from "../../services/api/apiClient";
+import Sidebar from "../../components/Sidebar";
 
 type CreateUserFormData = {
   name: string;
